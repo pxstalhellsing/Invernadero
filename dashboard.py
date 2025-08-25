@@ -18,7 +18,7 @@ try:
     # refresca cada 5000 ms (5 segundos)
     st_autorefresh(interval=5000, key="auto_refresh")
 except Exception:
-    st.info("Auto-refresh opcional: instala 'streamlit-autorefresh' con:\n\npip install streamlit-autorefresh")
+    st.info("instala 'streamlit-autorefresh' pip install streamlit-autorefresh")
 
 #obtener datos 
 def obtener_datos(endpoint):
@@ -44,7 +44,7 @@ with col1:
             df_temp = df_temp.set_index("timestamp").sort_index()
             st.line_chart(df_temp["valor"])
     else:
-        st.warning("Temperatura: datos no disponibles (asegúrate de que la API esté corriendo)")
+        st.warning("Temperatura: datos no disponibles")
 
 with col2:
     hum_data = obtener_datos("humedad")
@@ -76,4 +76,5 @@ with st.expander("Mostrar respuestas crudas (debug)"):
         "temperatura": temp_data,
         "humedad": hum_data,
         "ph": ph_data
+
     })
